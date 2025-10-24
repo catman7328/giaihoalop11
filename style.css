@@ -1,13 +1,315 @@
+/* Nền */
 body {
   background-image: url(./prasun-mishra-Je33gGuNrPk-unsplash.jpg);
-  background-repeat: no-repeat; /*  Không lặp ảnh */
-  background-size: cover; /* Ảnh phủ toàn bộ, không bị méo */
-  background-position: center; /*  Căn giữa ảnh */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: "Segoe UI", sans-serif;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
+
+/* Lớp mờ phủ nền để dễ đọc */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: -1;
+}
+
+/* Tiêu đề */
 h1 {
   text-align: center;
-  color: red;
+  color: #0059ff;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+  animation: fadeInDown 1.2s ease;
 }
+
+/* Container chính */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Thẻ bài học */
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
 h3 {
-  color: rgb(247, 4, 211);
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+
+/* Link */
+a {
+  color: #0066ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #ff0077;
+  text-decoration: underline;
+}
+
+/* Hiệu ứng xuất hiện */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .card {
+    padding: 16px;
+  }
+}
+/* --- Hiệu ứng bình hóa học bên tiêu đề --- */
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Khung bình */
+.flask {
+  position: relative;
+  width: 50px;
+  height: 70px;
+  background: transparent;
+  border: 3px solid #0077cc;
+  border-top: none;
+  border-radius: 0 0 25px 25px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 119, 204, 0.5);
+}
+
+/* Cổ bình */
+.flask::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid #0077cc;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+}
+
+/* Chất lỏng trong bình */
+.liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, #00bfff, #0077cc);
+  border-radius: 0 0 20px 20px;
+  animation: wave 3s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+/* Sóng nước chuyển động */
+@keyframes wave {
+  0% {
+    height: 40%;
+    transform: translateY(0);
+    background: linear-gradient(180deg, #00bfff, #0077cc);
+  }
+  50% {
+    height: 55%;
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, #1ecbe1, #0077cc);
+  }
+  100% {
+    height: 45%;
+    transform: translateY(0);
+    background: linear-gradient(180deg, #00bfff, #0066ff);
+  }
+}
+
+/* Hiệu ứng nước lấp lánh */
+.liquid::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 60%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: shimmer 2s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  from {
+    opacity: 0.4;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateX(5px);
+  }
+}
+/* --- Hiệu ứng bông hoa nở --- */
+
+.flower {
+  position: relative;
+  width: 60px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: sway 3s ease-in-out infinite alternate;
+}
+
+/* Thân hoa */
+.stem {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  height: 45px;
+  background: #2ecc71;
+  border-radius: 3px;
+  animation: growStem 1.8s ease-out forwards;
+}
+
+/* Cánh hoa */
+.petal {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #ff7bc4;
+  border-radius: 50%;
+  transform-origin: center bottom;
+  opacity: 0;
+  animation: bloom 2s ease-out forwards;
+}
+
+.petal1 {
+  top: 10px;
+  left: 15px;
+  transform: rotate(0deg);
+  animation-delay: 1s;
+}
+
+.petal2 {
+  top: 10px;
+  right: 15px;
+  transform: rotate(90deg);
+  animation-delay: 1.2s;
+}
+
+.petal3 {
+  bottom: 20px;
+  left: 5px;
+  transform: rotate(210deg);
+  animation-delay: 1.4s;
+}
+
+.petal4 {
+  bottom: 20px;
+  right: 5px;
+  transform: rotate(330deg);
+  animation-delay: 1.6s;
+}
+
+/* Nhị hoa */
+.center {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: gold;
+  border-radius: 50%;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: appear 2s ease-in 2s forwards;
+}
+
+/* --- Animation --- */
+@keyframes bloom {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(var(--angle));
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes growStem {
+  from {
+    height: 0;
+  }
+  to {
+    height: 45px;
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-2deg);
+  }
+  to {
+    transform: rotate(2deg);
+  }
 }

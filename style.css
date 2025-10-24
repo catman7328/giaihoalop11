@@ -1,7 +1,13 @@
+body {
+  background-image: url(./prasun-mishra-Je33gGuNrPk-unsplash.jpg);
+  background-repeat: no-repeat; /*  Không lặp ảnh */
+  background-size: cover; /* Ảnh phủ toàn bộ, không bị méo */
+  background-position: center; /*  Căn giữa ảnh */
+}
 h1 {
   text-align: center;
   color: red;
 }
 h3 {
-  color: rgb(0, 255, 89);
+  color: rgb(247, 4, 211);
 }
